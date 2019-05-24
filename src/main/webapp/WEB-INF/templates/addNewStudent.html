@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Add New Student</title>
+</head>
+<body>
+<h1>Create new student</h1>
+<form action="#" th:action="@{/createStudent}" th:object="${student}" method="post">
+    <table>
+        <tr>
+            <td>Index</td>
+            <td>
+                <input type="number" th:field="*{index}"/>
+                <label th:if="${#fields.hasErrors('index')}" th:errors="*{index}">Index</label>
+            </td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>
+                <input type="text" th:field="*{name}"/>
+                <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name</label>
+            </td>
+        </tr>
+        <tr>
+            <td>Surname</td>
+            <td>
+                <input type="text" th:field="*{surname}"/>
+                <label th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">Surname</label>
+            </td>
+        </tr>
+        <tr>
+            <td>Age</td>
+            <td>
+                <input type="number" th:field="*{age}"/>
+                <label th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" th:value="Submit"/>
+            </td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

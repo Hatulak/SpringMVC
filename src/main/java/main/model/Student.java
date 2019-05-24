@@ -1,11 +1,45 @@
 package main.model;
 
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
+@Entity
 public class Student {
+
+    @NotNull(message = "{index.notnull}")
+    @Min(value = 10000000, message = "{index.characters}")
+    @Max(value = 99999999, message = "{index.characters}")
+    @Id
     private Integer index;
+
+    @NotBlank(message = "{name.notblank}")
+    @Length(min = 2, max = 20, message = "{name.length}")
+    @Pattern(regexp = "^[A-Z]([a-z])+$", message = "{name.capital}")
     private String name;
+
+    @NotBlank(message = "{surname.notblank}")
+    @Length(min = 2, max = 30, message = "{surname.length}")
+    @Pattern(regexp = "^[A-Z]([a-z])+$", message = "{surname.capital}")
     private String surname;
+
+    @NotNull(message = "{age.notnull}")
+    @Min(value = 18, message = "{age.value}")
+    @Max(value = 30, message = "{age.value}")
     private Integer age;
+
+    public Student(String name, String surname, Integer age) {
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
+    }
 
     public Student() {
     }

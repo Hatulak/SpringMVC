@@ -6,8 +6,7 @@
 </head>
 <body>
 <h1>Create new Student</h1>
-<form:form method="post"
-           action="/createStudent" modelAttribute="student">
+<form:form method="post" action="/createStudent" modelAttribute="student">
     <table>
         <tr>
             <td><form:label path="name">Name</form:label></td>
