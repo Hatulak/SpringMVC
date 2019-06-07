@@ -1,5 +1,7 @@
 package main.controllers;
 
+import main.exceptions.NoSuchStudentInDBException;
+import main.exceptions.StudentAlreadyExistsInDBException;
 import main.model.Student;
 import main.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +28,12 @@ public class StudentsController {
 
     @RequestMapping(value = "/student/{index}")
     public String getStudentByIndex(@PathVariable int index, Model model) {
-        Student student = studentService.getByIndex(index);
+        Student student = null;
+        try {
+            student = studentService.getByIndex(index);
+        } catch (NoSuchStudentInDBException e) {
+            e.printStackTrace();
+        }
         model.addAttribute("student", student);
         return "student";
     }
@@ -48,7 +55,11 @@ public class StudentsController {
         if (result.hasErrors()) {
             return "addNewStudent";
         } else {
-            studentService.addStudent(student);
+            try {
+                studentService.addStudent(student);
+            } catch (StudentAlreadyExistsInDBException e) {
+                e.printStackTrace();
+            }
             return "redirect:/allStudents";
         }
     }

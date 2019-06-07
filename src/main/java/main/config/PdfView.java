@@ -13,7 +13,6 @@ import java.util.Map;
 
 public class PdfView extends AbstractITextPdfView {
 
-
     @Override
     protected void buildPdfDocument(Map<String, Object> model, Document document, PdfWriter writer, HttpServletRequest request, HttpServletResponse response) throws Exception {
         List<Student> students = (List<Student>) model.get("students");

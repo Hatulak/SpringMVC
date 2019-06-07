@@ -23,6 +23,8 @@ import java.util.List;
 @EnableWebMvc
 public class WebConfig extends WebMvcConfigurerAdapter {
 
+    public static final String HTML_5 = "HTML5";
+
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
@@ -78,7 +80,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setPrefix("/WEB-INF/templates/");
         templateResolver.setSuffix(".html");
-        templateResolver.setTemplateMode("HTML5");
+        templateResolver.setTemplateMode(HTML_5);
         templateResolver.setCacheable(true);
         return templateResolver;
     }

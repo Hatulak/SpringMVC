@@ -13,4 +13,8 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
     Student getByIndex(Integer index);
 
     Student save(Student student);
+
+    void delete(Integer integer);
+
+    void delete(Student student);
 }
